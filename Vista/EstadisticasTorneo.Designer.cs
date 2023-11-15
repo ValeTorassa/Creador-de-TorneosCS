@@ -497,7 +497,7 @@
             Controls.Add(label29);
             Name = "EstadisticasTorneo";
             Text = "Estadisticas Torneo";
-            Load += Form4_Load;
+            Load += EstadisticasTorneo_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEquipo).EndInit();
             gbPuestos.ResumeLayout(false);
             gbPuestos.PerformLayout();

@@ -10,64 +10,263 @@ namespace Vista
         {
             InitializeComponent();
         }
-        //Metodo asocioado al boton de " Agregar" jugador.
+        // Metodo asociado al botón de "Agregar" jugador.
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //Verifica si se ingreso nombre y rango del jugador
-            if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(cmbRango.Text))
+            try
             {
-                //Crea un nuevo jugador con los datos ingresados.
-                var mensaje = GestorTorneo.Instancia.CrearJugador(txtNombre.Text, cmbRango.Text);
-                MessageBox.Show(mensaje);
-                //Actualiza la grilla de jugadores
-                ActualizarGrilla();
-            }
+                if (!string.IsNullOrEmpty(txtNombre.Text) && !string.IsNullOrEmpty(cmbRango.Text))
+                {
+                    var mensaje = GestorTorneo.Instancia.CrearJugador(txtNombre.Text, cmbRango.Text);
+                    MessageBox.Show(mensaje);
+                    ActualizarGrilla();
+                }
 
-            //Limpia los campos de entrada.
-            LimpiarCampos();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar jugador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        //Metodo asociado al boton de "Eliminar" jugador.
+
+        // Metodo asociado al botón de "Eliminar" jugador.
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            //Verifica que haya un jugador cargado en al grilla.
-            if (dgvJugadores.Rows.Count > 0)
+            try
             {
-                //Selecciona al jugador de la grilla.
-                var jugadorSeleccionado = (Jugador)dgvJugadores.CurrentRow.DataBoundItem;
-
-                if (jugadorSeleccionado != null)
+                if (dgvJugadores.Rows.Count > 0)
                 {
-                    //Elimina el jugador seleccionado
-                    var mensaje = GestorTorneo.Instancia.EliminarJugador(jugadorSeleccionado);
+                    var jugadorSeleccionado = (Jugador)dgvJugadores.CurrentRow.DataBoundItem;
+
+                    if (jugadorSeleccionado != null)
+                    {
+                        var mensaje = GestorTorneo.Instancia.EliminarJugador(jugadorSeleccionado);
+                        MessageBox.Show(mensaje);
+                        ActualizarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El jugador no se ha podido eliminar", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar jugador: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Metodo asociado al botón "Crear Torneo Casual"
+        private void btnTorneos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtNombreTorneo.Text) && numJugadores.Value <= GestorTorneo.Instancia.ObtenerJugadoresSinEquipo().Count)
+                {
+                    var mensaje = GestorTorneo.Instancia.CrearTorneoCasual(txtNombreTorneo.Text, Convert.ToInt32(numJugadores.Value));
                     MessageBox.Show(mensaje);
+
+                    ActualizarCMBs();
                     ActualizarGrilla();
                 }
                 else
                 {
-                    MessageBox.Show("El jugador no se ha podido eliminar", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El torneo no se ha podido agregar", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar Torneo Casual: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Metodo asociado al botón de "Ver Torneo Casual"
+        private void btnVerTorneo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string torneoSeleccionadoNombre = cmbTorneoCasual.Text;
+
+                if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
+                {
+                    Modelo.Torneo torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneo(torneoSeleccionadoNombre);
+
+                    Torneo form2 = new Torneo(torneoSeleccionado);
+                    form2.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un torneo antes de continuar.");
+                }
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir torneo Casual: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Metodo asociado al botón de "Eliminar Torneo" (Casual)
+        private void btnEliminarTorneo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string torneoSeleccionadoNombre = cmbTorneoCasual.Text;
+
+                if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
+                {
+                    Modelo.Torneo torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneo(torneoSeleccionadoNombre);
+
+                    var mensaje = GestorTorneo.Instancia.EliminarTorneoCasual(torneoSeleccionado);
+                    MessageBox.Show(mensaje);
+
+                    ActualizarCMBs();
+                    ActualizarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un torneo antes de eliminarlo.");
+                }
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar un torneo casual: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Metodo asociado al botón de "Ver Torneo Profesional"
+        private void btnVerTorneoProfesional_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string torneoSeleccionadoNombre = cmbTorneosProfesionales.Text;
+
+                if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
+                {
+                    TorneoProfesional torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneoProfesional(torneoSeleccionadoNombre);
+                    Torneo form2 = new Torneo(torneoSeleccionado);
+                    form2.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un torneo antes de continuar.");
                 }
             }
-            LimpiarCampos();
-        }
-        //Metodo asociado al boton "Crear Torneo Casual"
-        private void btnTorneos_Click(object sender, EventArgs e)
-        {
-            //Verifica si se ingreso un Nombre y  numero de jugadores
-            if (!string.IsNullOrEmpty(txtNombreTorneo.Text) && numJugadores.Value <= GestorTorneo.Instancia.ObtenerJugadoresSinEquipo().Count)
+            catch (Exception ex)
             {
-                //Crea el torneo
-                var mensaje = GestorTorneo.Instancia.CrearTorneoCasual(txtNombreTorneo.Text, Convert.ToInt32(numJugadores.Value));
-                MessageBox.Show(mensaje);
+                MessageBox.Show($"Error al abrir torneo profesional: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        // Metodo asociado al botón de "Eliminar Torneo Profesional"
+        private void btnEliminarProfesional_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string torneoSeleccionadoNombre = cmbTorneosProfesionales.Text;
+
+                if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
+                {
+                    TorneoProfesional torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneoProfesional(torneoSeleccionadoNombre);
+
+                    var mensaje = GestorTorneo.Instancia.EliminarTorneoProfesional(torneoSeleccionado);
+                    MessageBox.Show(mensaje);
+
+                    ActualizarCMBs();
+                    ActualizarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("Selecciona un torneo profesional antes de eliminarlo.");
+                }
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar torneo profesional: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Metodo asociado al botón "Crear Torneo Profesional"
+        private void btnTorneoProfesional_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtNombreTorneo.Text) && numJugadores.Value <= GestorTorneo.Instancia.ObtenerJugadoresSinEquipoProfesionales().Count && !string.IsNullOrEmpty(txtUbicacion.Text))
+                {
+                    var mensaje = GestorTorneo.Instancia.CrearTorneoProfesional(txtNombreTorneo.Text, Convert.ToInt32(numJugadores.Value), txtUbicacion.Text, Convert.ToInt32(numPremio.Value));
+                    MessageBox.Show(mensaje);
+
+                    ActualizarCMBs();
+                    ActualizarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("El torneo profesional no se ha podido crear", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar torneo profesional: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Metodo asociado al evento Load del formulario
+        private void PoolJugadores_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                CreacionRangos();
+                JugadoresAleatorios();
                 ActualizarCMBs();
                 ActualizarGrilla();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("El torneo no se ha podido agregar", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Error en el cargar el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            LimpiarCampos();
         }
+
+        // Metodo asociado al botón "Salir"
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Método para actualizar los ComboBoxes con información de torneos y rangos
+        void ActualizarCMBs()
+        {
+            try
+            {
+                cmbTorneoCasual.DataSource = null;
+                cmbTorneoCasual.DataSource = GestorTorneo.Instancia.ObtenerTorneosCasuales();
+                cmbTorneoCasual.DisplayMember = "Nombre";
+
+                cmbTorneosProfesionales.DataSource = null;
+                cmbTorneosProfesionales.DataSource = GestorTorneo.Instancia.ObtenerTorneosProfesionales();
+                cmbTorneosProfesionales.DisplayMember = "Nombre";
+
+                cmbRango.DataSource = null;
+                cmbRango.DataSource = GestorTorneo.Instancia.ObtenerRangos();
+                cmbRango.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en el actualizar los comboboxs: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         //Metodo para actualizar la grilla de jugadores
         void ActualizarGrilla()
@@ -77,140 +276,15 @@ namespace Vista
 
             dgvJugadores.DataSource = GestorTorneo.Instancia.ObtenerJugadoresSinEquipo();
         }
-        // Método para actualizar los ComboBoxes con información de torneos y rangos
-        void ActualizarCMBs()
-        {
-            cmbTorneoCasual.DataSource = null;
-            cmbTorneoCasual.DataSource = GestorTorneo.Instancia.ObtenerTorneosCasuales();
-            cmbTorneoCasual.DisplayMember = "Nombre";
 
 
-            cmbTorneosProfesionales.DataSource = null;
-            cmbTorneosProfesionales.DataSource = GestorTorneo.Instancia.ObtenerTorneosProfesionales();
-            cmbTorneosProfesionales.DisplayMember = "Nombre";
-
-
-            cmbRango.DataSource = null;
-            cmbRango.DataSource = GestorTorneo.Instancia.ObtenerRangos();
-            cmbRango.DisplayMember = "Nombre";
-        }
-        //Metodo asociado al botn de  "Ver Torneo Casual"
-        private void btnVerTorneo_Click(object sender, EventArgs e)
-        {
-            string torneoSeleccionadoNombre = cmbTorneoCasual.Text;
-            //Verifica que haya un torneo seleccionado en el ComboBox
-            if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
-            {
-                Modelo.Torneo torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneo(torneoSeleccionadoNombre);
-
-                Torneo form2 = new Torneo(torneoSeleccionado);
-                form2.Show();
-            }
-            else
-            {
-                MessageBox.Show("Selecciona un torneo antes de continuar.");
-            }
-            LimpiarCampos();
-        }
-
-        //Metodo asociado al botn de  "Eliminar Torneo" (Casual)
-        private void btnEliminarTorneo_Click(object sender, EventArgs e)
-        {
-            string torneoSeleccionadoNombre = cmbTorneoCasual.Text;
-            //Verifica que haya un torneo seleccionado en el ComboBox
-            if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
-            {
-                // Obtiene el objeto Torneo correspondiente al nombre seleccionado
-                Modelo.Torneo torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneo(torneoSeleccionadoNombre);
-                //Elimina el torneo seleccionado
-                var mensaje = GestorTorneo.Instancia.EliminarTorneoCasual(torneoSeleccionado);
-                MessageBox.Show(mensaje);
-                // Actualiza los ComboBoxes y la grilla de jugadores después de eliminarlo
-                ActualizarCMBs();
-                ActualizarGrilla();
-            }
-            else
-            {
-                MessageBox.Show("Selecciona un torneo antes de eliminarlo.");
-            }
-            LimpiarCampos();
-        }
-        //Metodo asociado al boton "Ver Torneo Profesional"
-        private void btnVerTorneoProfesional_Click(object sender, EventArgs e)
-        {
-            string torneoSeleccionadoNombre = cmbTorneosProfesionales.Text;
-
-            if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
-            {
-                //Obtiene el Torneo Profesional correspondiente al nombre seleccionado en el ComboBox
-                TorneoProfesional torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneoProfesional(torneoSeleccionadoNombre);
-                //Abre una instancia y le pasa el torneo seleccionado
-                Torneo form2 = new Torneo(torneoSeleccionado);
-                form2.Show();
-            }
-            else
-            {
-                MessageBox.Show("Selecciona un torneo antes de continuar.");
-            }
-        }
-        //Metodo asociado al botn de  "Eliminar Torneo Profesional"
-        private void btnEliminarProfesional_Click(object sender, EventArgs e)
-        {
-            string torneoSeleccionadoNombre = cmbTorneosProfesionales.Text;
-            //Verifica que haya un torneo seleccionado en el ComboBox
-            if (!string.IsNullOrEmpty(torneoSeleccionadoNombre))
-            {   // Obtiene el objeto Torneo correspondiente al nombre seleccionado
-                TorneoProfesional torneoSeleccionado = GestorTorneo.Instancia.ObtenerTorneoProfesional(torneoSeleccionadoNombre);
-                //Elimina el torneo seleccionado
-                var mensaje = GestorTorneo.Instancia.EliminarTorneoProfesional(torneoSeleccionado);
-                MessageBox.Show(mensaje);
-                // Actualiza los ComboBoxes y la grilla de jugadores después de eliminarlo
-                ActualizarCMBs();
-                ActualizarGrilla();
-            }
-            else
-            {
-                MessageBox.Show("Selecciona un torneo profesional antes de eliminarlo.");
-            }
-            LimpiarCampos();
-        }
-        //Metodo para limpiar los campos de entradas.
-        private void LimpiarCampos()
-        {
-            txtNombre.Text = "";
-            txtNombreTorneo.Text = "";
-            txtUbicacion.Text = "";
-        }
-        //Metodo asociado al boton "Crear Torneo Profesional"
-        private void btnTorneoProfesional_Click(object sender, EventArgs e)
-        {
-            //Verifica si se ingreso un Nombre y  numero de jugadores
-            if (!string.IsNullOrEmpty(txtNombreTorneo.Text) && numJugadores.Value <= GestorTorneo.Instancia.ObtenerJugadoresSinEquipoProfesionales().Count && !string.IsNullOrEmpty(txtUbicacion.Text))
-            {   //Crea el Torneo
-                var mensaje = GestorTorneo.Instancia.CrearTorneoProfesional(txtNombreTorneo.Text, Convert.ToInt32(numJugadores.Value), txtUbicacion.Text, Convert.ToInt32(numPremio.Value));
-                MessageBox.Show(mensaje);
-
-                ActualizarCMBs();
-                ActualizarGrilla();
-            }
-            else
-            {
-                MessageBox.Show("El torneo profesional no se ha podido crear", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            LimpiarCampos();
-        }
-        //Metodo asociado al boton "Salir"
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         // Método para generar jugadores aleatorios
         private void JugadoresAleatorios()
         {
             // Lista de nombres de usuarios
             List<string> nombresDeUsuarios = new List<string>
             {
-                "AirWolf","Fessa","AirWolf", "Fessa", "ShadowBlade", "LunaStorm", "NovaGamer", "CyberNinja", "PhoenixFire", "SpectralSword", "NeonFury", "RogueWolf", "VortexSlayer", "PixelPirate", "MysticRider", "RapidFalcon", "EchoEnigma", "ChronoWraith"
+                "AirWolf","Fessa", "DarkHallow", "NeitOH", "ElMaldito", "ElKaiser", "FJaime11", "SpectralSword", "NeonFury", "RogueWolf", "VortexSlayer", "PixelPirate", "MysticRider", "RapidFalcon", "EchoEnigma", "ChronoWraith"
             };
 
             Random random = new Random();
@@ -231,6 +305,7 @@ namespace Vista
                 GestorTorneo.Instancia.CrearJugador(nombreJugador, nombreRango);
             }
         }
+
         // Método para crear rangos
         private void CreacionRangos()
         {
@@ -241,15 +316,12 @@ namespace Vista
             GestorTorneo.Instancia.CrearRango("AK", 7);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        //Metodo para limpiar los campos de entradas.
+        private void LimpiarCampos()
         {
-            //Se crean los rangos 
-            CreacionRangos();
-            //Se crean jugadores y se añaden al DGV.
-            JugadoresAleatorios();
-            //Se actualizan las grillas
-            ActualizarCMBs();
-            ActualizarGrilla();
+            txtNombre.Text = "";
+            txtNombreTorneo.Text = "";
+            txtUbicacion.Text = "";
         }
     }
 }

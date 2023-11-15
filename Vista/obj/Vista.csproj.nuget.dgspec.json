@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Vista\\Vista.csproj": {}
+    "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Modelo\\Modelo.csproj": {
+    "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Modelo\\Modelo.csproj",
+        "projectUniqueName": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj",
         "projectName": "Modelo",
-        "projectPath": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Modelo\\Modelo.csproj",
-        "packagesPath": "C:\\Users\\Navegador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Modelo\\obj\\",
+        "projectPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj",
+        "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Navegador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -59,24 +59,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Vista\\Vista.csproj": {
+    "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Vista\\Vista.csproj",
+        "projectUniqueName": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj",
         "projectName": "Vista",
-        "projectPath": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Vista\\Vista.csproj",
-        "packagesPath": "C:\\Users\\Navegador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Vista\\obj\\",
+        "projectPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj",
+        "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Navegador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Valen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -91,8 +91,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Modelo\\Modelo.csproj": {
-                "projectPath": "C:\\Users\\Navegador\\Downloads\\Torneo CS Ultima Version2\\Creador-de-Torneos-CS-VersionFinal\\Modelo\\Modelo.csproj"
+              "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj": {
+                "projectPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj"
               }
             }
           }
@@ -125,7 +125,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

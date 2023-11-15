@@ -148,6 +148,7 @@
             // 
             // cmbRango
             // 
+            cmbRango.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRango.FormattingEnabled = true;
             cmbRango.Location = new Point(105, 404);
             cmbRango.Name = "cmbRango";
@@ -376,7 +377,7 @@
             gbJugadores.TabStop = false;
             gbJugadores.Text = "Jugadores";
             // 
-            // Form1
+            // PoolJugadores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -390,9 +391,9 @@
             Controls.Add(btnSalir);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "PoolJugadores";
             Text = "Menu";
-            Load += Form1_Load;
+            Load += PoolJugadores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvJugadores).EndInit();
             ((System.ComponentModel.ISupportInitialize)numJugadores).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPremio).EndInit();

@@ -22,35 +22,42 @@ namespace Vista
         // Constructor del formulario Form3
         public ResultadosPartida(Partida partidaExistente)
         {
-            InitializeComponent();
-
-            // Configura las etiquetas de nombre de los equipos local y visitante en el formulario.
-            lblLocal1.Text = "Local: " + partidaExistente.NombreLocal;
-            lblLocal2.Text = "Local: " + partidaExistente.NombreLocal;
-            lblLocal3.Text = "Local: " + partidaExistente.NombreLocal;
-            lblVisitante1.Text = "Visitante: " + partidaExistente.NombreVisitante;
-            lblVisitante2.Text = "Visitante: " + partidaExistente.NombreVisitante;
-            lblVisitante3.Text = "Visitante: " + partidaExistente.NombreVisitante;
-
-            if (partidaExistente.PartidaJugada == false)
+            try
             {
-                // Si la partida aún no se ha jugado, establece la partida que se está registrando.
-                partida = partidaExistente;
+                InitializeComponent();
 
-                lblAgregarModificar.Text = "Subir Resultado";
+                // Configura las etiquetas de nombre de los equipos local y visitante en el formulario.
+                lblLocal1.Text = "Local: " + partidaExistente.NombreLocal;
+                lblLocal2.Text = "Local: " + partidaExistente.NombreLocal;
+                lblLocal3.Text = "Local: " + partidaExistente.NombreLocal;
+                lblVisitante1.Text = "Visitante: " + partidaExistente.NombreVisitante;
+                lblVisitante2.Text = "Visitante: " + partidaExistente.NombreVisitante;
+                lblVisitante3.Text = "Visitante: " + partidaExistente.NombreVisitante;
+
+                if (partidaExistente.PartidaJugada == false)
+                {
+                    // Si la partida aún no se ha jugado, establece la partida que se está registrando.
+                    partida = partidaExistente;
+
+                    lblAgregarModificar.Text = "Subir Resultado";
+                }
+                else
+                {
+                    // Si la partida ya se ha jugado, llena los controles con los datos existentes de la partida.
+                    LlenarDatos(partidaExistente);
+
+                    // Indica que la partida ha sido modificada.
+                    modificada = true;
+
+                    lblAgregarModificar.Text = "Modificar Resultado";
+
+                    // Establece la partida que se está modificando.
+                    partida = partidaExistente;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Si la partida ya se ha jugado, llena los controles con los datos existentes de la partida.
-                LlenarDatos(partidaExistente);
-
-                // Indica que la partida ha sido modificada.
-                modificada = true;
-
-                lblAgregarModificar.Text = "Modificar Resultado";
-
-                // Establece la partida que se está modificando.
-                partida = partidaExistente;
+                MessageBox.Show($"Error al construir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -112,24 +119,31 @@ namespace Vista
         // Maneja el evento cuando se hace clic en el botón "Aceptar" para confirmar y registrar/modificar el resultado de la partida.
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            try
             {
-                // Crea un objeto ResultadoPartida con los valores de los controles en el formulario.
-                ResultadoPartida resultado = new ResultadoPartida(
-                    radioButton1.Checked,
-                    (int)numRondasLocal.Value,
-                    (int)numMuertesLocal.Value,
-                    radioButton2.Checked,
-                    (int)numRondasVisitante.Value,
-                    (int)numMuertesVisitantes.Value,
-                    (int)numDuracion.Value,
-                    cmbMapas.SelectedItem.ToString()
-                );
+                if (Validar())
+                {
+                    // Crea un objeto ResultadoPartida con los valores de los controles en el formulario.
+                    ResultadoPartida resultado = new ResultadoPartida(
+                        radioButton1.Checked,
+                        (int)numRondasLocal.Value,
+                        (int)numMuertesLocal.Value,
+                        radioButton2.Checked,
+                        (int)numRondasVisitante.Value,
+                        (int)numMuertesVisitantes.Value,
+                        (int)numDuracion.Value,
+                        cmbMapas.SelectedItem.ToString()
+                    );
 
-                // Llama al método RegistrarModificarResultado en el GestorTorneo para registrar o modificar el resultado.
-                GestorTorneo.Instancia.RegistrarModificarResultado(partida, resultado);
+                    // Llama al método RegistrarModificarResultado en el GestorTorneo para registrar o modificar el resultado.
+                    GestorTorneo.Instancia.RegistrarModificarResultado(partida, resultado);
 
-                this.Close(); // Cierra el formulario después de registrar/modificar el resultado.
+                    this.Close(); // Cierra el formulario después de registrar/modificar el resultado.
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al procesar el resultado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

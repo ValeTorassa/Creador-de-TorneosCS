@@ -18,32 +18,47 @@ namespace Vista
         //Constructor para Torneo Casuales
         public Torneo(Modelo.Torneo torneoSeleccionado)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            lblNombre.Text = "Nombre: " + torneoSeleccionado.Nombre;
-            lblTipoTorneo.Text = "Torneo Casual";
-            lblUbicacion.Text = "";
-            lblPremio.Text = "";
+                lblNombre.Text = "Nombre: " + torneoSeleccionado.Nombre;
+                lblTipoTorneo.Text = "Torneo Casual";
+                lblUbicacion.Text = "";
+                lblPremio.Text = "";
 
-            torneo = torneoSeleccionado;
+                torneo = torneoSeleccionado;
 
-            MostrarEquiposYPartidas();
+                MostrarEquiposYPartidas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al construir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
         //Constructor para Torneo Profesionales
         public Torneo(TorneoProfesional torneoSeleccionado)
         {
-            InitializeComponent();
-            lblNombre.Text = "Nombre: " + torneoSeleccionado.Nombre;
-            lblUbicacion.Text = "Ubicación: " + torneoSeleccionado.Ubicacion;
-            lblPremio.Text = $"Premio en dólares: ${torneoSeleccionado.Premio}";
-            lblTipoTorneo.Text = "Torneo Profesional";
+            try
+            {
+                InitializeComponent();
+                lblNombre.Text = "Nombre: " + torneoSeleccionado.Nombre;
+                lblUbicacion.Text = "Ubicación: " + torneoSeleccionado.Ubicacion;
+                lblPremio.Text = $"Premio en dólares: ${torneoSeleccionado.Premio}";
+                lblTipoTorneo.Text = "Torneo Profesional";
 
-            torneo = torneoSeleccionado;
+                torneo = torneoSeleccionado;
 
-            MostrarEquiposYPartidas();
+                MostrarEquiposYPartidas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al construir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
 
         //Metodo para mostrar Equipos y Partidas en el formulario.
@@ -66,10 +81,17 @@ namespace Vista
         //Maneja el evento al hacer clic en una celda del DataGridView de equipos
         private void dgvEquipos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvEquipos.Rows.Count > 0)
+            try
             {
-                var equipo = (Equipo)dgvEquipos.CurrentRow.DataBoundItem;
-                MostrarJugadoresEquipo(equipo);
+                if (dgvEquipos.Rows.Count > 0)
+                {
+                    var equipo = (Equipo)dgvEquipos.CurrentRow.DataBoundItem;
+                    MostrarJugadoresEquipo(equipo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al mostrar jugadores del equipo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,104 +106,121 @@ namespace Vista
         // Maneja el evento al hacer clic en el botón "Resultados".
         private void btnResultados_Click(object sender, EventArgs e)
         {
-            if (dgvPartidas.Rows.Count > 0)
+            try
             {
-                var partida = (Partida)dgvPartidas.CurrentRow.DataBoundItem;
-                if (!partida.PartidaJugada)
+                if (dgvPartidas.Rows.Count > 0)
                 {
-                    // Si la partida no ha sido jugada, muestra un formulario de resultados (Form3).
-                    var form3 = new ResultadosPartida(partida);
-                    form3.ShowDialog();
+                    var partida = (Partida)dgvPartidas.CurrentRow.DataBoundItem;
+                    if (!partida.PartidaJugada)
+                    {
+                        var form3 = new ResultadosPartida(partida);
+                        form3.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La partida ya ha sido jugada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else
-                {
-                    // Si la partida ya ha sido jugada, muestra un mensaje de aviso.
-                    MessageBox.Show("La partida ya ha sido jugada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                ActualizarGrillaPartidas();
             }
-            ActualizarGrillaPartidas(); // Actualiza la grilla de partidas .
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar resultados: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Maneja el evento al hacer clic en el botón "Modificar".
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvPartidas.Rows.Count > 0)
+            try
             {
-                var partida = (Partida)dgvPartidas.CurrentRow.DataBoundItem;
-                if (partida.PartidaJugada)
+                if (dgvPartidas.Rows.Count > 0)
                 {
-                    // Si la partida ya ha sido jugada, muestra un formulario de modificación de resultados (Form3).
-                    var form3 = new ResultadosPartida(partida);
-                    form3.Show();
+                    var partida = (Partida)dgvPartidas.CurrentRow.DataBoundItem;
+                    if (partida.PartidaJugada)
+                    {
+                        var form3 = new ResultadosPartida(partida);
+                        form3.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La partida no ha sido jugada aún, no se puede modificar su resultado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else
-                {
-                    // Si la partida no ha sido jugada, muestra un mensaje de aviso.
-                    MessageBox.Show("La partida no ha sido jugada aún, no se puede modificar su resultado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                ActualizarGrillaPartidas(); // Actualiza la grilla de partidas .
             }
-            ActualizarGrillaPartidas(); // Actualiza la grilla de partidas .
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al modificar los resultados: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
 
 
         // Maneja el evento al hacer clic en el botón "Información".
         private void btnInformacion_Click(object sender, EventArgs e)
         {
-            // Busca una partida sin jugar en el torneo.
-            var partidaSinJugar = torneo.GetPartidas().FirstOrDefault(p => !p.PartidaJugada);
-
-            if (partidaSinJugar == null)
+            try
             {
-                // Si no hay partidas sin jugar, abre un formulario de información (Form4).
-                EstadisticasTorneo form4 = new EstadisticasTorneo(torneo);
-                form4.ShowDialog();
-            }
-            else
-            {
-                var partidasJugadas = torneo.GetPartidas().Count(p => p.PartidaJugada);
+                var partidaSinJugar = torneo.GetPartidas().FirstOrDefault(p => !p.PartidaJugada);
 
-                if (partidasJugadas == 0)
+                if (partidaSinJugar == null)
                 {
-                    MessageBox.Show("No hay partidas jugadas, registra al menos una partida para ver las estadisticas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    EstadisticasTorneo form4 = new EstadisticasTorneo(torneo);
+                    form4.ShowDialog();
                 }
                 else
                 {
-                    EstadisticasProvisionales form5 = new EstadisticasProvisionales(torneo);
-                    form5.ShowDialog();
+                    var partidasJugadas = torneo.GetPartidas().Count(p => p.PartidaJugada);
+
+                    if (partidasJugadas == 0)
+                    {
+                        MessageBox.Show("No hay partidas jugadas, registra al menos una partida para ver las estadísticas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        EstadisticasProvisionales form5 = new EstadisticasProvisionales(torneo);
+                        form5.ShowDialog();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en mostrar las estadisticas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    
+
 
         // Método para actualizar la presentación de la grilla de partidas en un DataGridView.
         private void ActualizarGrillaPartidas()
         {
-            // Configura el DataGridView de las partidas.
-            dgvPartidas.DataSource = null;
-            dgvPartidas.DataSource = torneo.GetPartidas();
-
-            // Agrega un evento de formateo de celda para cambiar el color de las filas según si la partida está jugada o no.
-            dgvPartidas.CellFormatting += (sender, e) =>
+            try
             {
-                if (e.RowIndex >= 0)
-                {
-                    var partida = (Partida)dgvPartidas.Rows[e.RowIndex].DataBoundItem;
+                dgvPartidas.DataSource = null;
+                dgvPartidas.DataSource = torneo.GetPartidas();
 
-                    // Verifica si la partida está jugada y establece el color de fondo en verde.
-                    if (partida.PartidaJugada)
+                dgvPartidas.CellFormatting += (sender, e) =>
+                {
+                    if (e.RowIndex >= 0)
                     {
-                        e.CellStyle.BackColor = Color.Green;
-                        e.CellStyle.ForeColor = Color.White;
+                        var partida = (Partida)dgvPartidas.Rows[e.RowIndex].DataBoundItem;
+
+                        if (partida.PartidaJugada)
+                        {
+                            e.CellStyle.BackColor = Color.Green;
+                            e.CellStyle.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            e.CellStyle.BackColor = dgvPartidas.DefaultCellStyle.BackColor;
+                            e.CellStyle.ForeColor = dgvPartidas.DefaultCellStyle.ForeColor;
+                        }
                     }
-                    else
-                    {
-                        // Si no está jugada, utiliza los colores predeterminados.
-                        e.CellStyle.BackColor = dgvPartidas.DefaultCellStyle.BackColor;
-                        e.CellStyle.ForeColor = dgvPartidas.DefaultCellStyle.ForeColor;
-                    }
-                }
-            };
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error en el Actualizar la grilla de partidas: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
