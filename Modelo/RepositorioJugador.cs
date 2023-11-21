@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    public class RepositorioJugador : IRepositorio
+    public class RepositorioJugador : IRepositorio<Jugador>
     {
         //Almacena la lista de jugadores
         private List<Jugador> jugadores;

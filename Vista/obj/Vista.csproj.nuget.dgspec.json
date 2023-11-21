@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj": {}
+    "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Vista\\Vista.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj": {
+    "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj",
+        "projectUniqueName": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj",
         "projectName": "Modelo",
-        "projectPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj",
+        "projectPath": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj",
         "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\obj\\",
+        "outputPath": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Modelo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj": {
+    "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Vista\\Vista.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj",
+        "projectUniqueName": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Vista\\Vista.csproj",
         "projectName": "Vista",
-        "projectPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\Vista.csproj",
+        "projectPath": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Vista\\Vista.csproj",
         "packagesPath": "C:\\Users\\Valen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Vista\\obj\\",
+        "outputPath": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Vista\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,8 +91,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj": {
-                "projectPath": "C:\\Users\\Valen\\Desktop\\Torneo CS Ultima Version\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj"
+              "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj": {
+                "projectPath": "C:\\Users\\Valen\\Downloads\\Creador-de-TorneosCS\\Modelo\\Modelo.csproj"
               }
             }
           }

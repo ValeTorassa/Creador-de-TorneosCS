@@ -255,3 +255,28 @@ C:\Users\Navegador\Downloads\Torneo CS Ultima Version2\Creador-de-Torneos-CS-Ver
 C:\Users\Navegador\Downloads\Torneo CS Ultima Version2\Creador-de-Torneos-CS-VersionFinal\Vista\obj\Debug\net6.0-windows\Vista.pdb
 C:\Users\Navegador\Downloads\Torneo CS Ultima Version2\Creador-de-Torneos-CS-VersionFinal\Vista\obj\Debug\net6.0-windows\Vista.genruntimeconfig.cache
 C:\Users\Navegador\Downloads\Torneo CS Ultima Version2\Creador-de-Torneos-CS-VersionFinal\Vista\obj\Debug\net6.0-windows\ref\Vista.dll
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Vista.exe
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Vista.deps.json
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Vista.runtimeconfig.json
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Vista.dll
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Vista.pdb
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Modelo.dll
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\bin\Debug\net6.0-windows\Modelo.pdb
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.csproj.AssemblyReference.cache
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.EstadisticasProvisionales.resources
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.EstadisticasTorneo.resources
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.PoolJugadores.resources
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.Properties.Resources.resources
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.ResultadosPartida.resources
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.Torneo.resources
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.csproj.GenerateResource.cache
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.AssemblyInfoInputs.cache
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.AssemblyInfo.cs
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.csproj.CoreCompileInputs.cache
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.csproj.CopyComplete
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.dll
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\refint\Vista.dll
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.pdb
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\Vista.genruntimeconfig.cache
+C:\Users\Valen\Downloads\Creador-de-TorneosCS\Vista\obj\Debug\net6.0-windows\ref\Vista.dll

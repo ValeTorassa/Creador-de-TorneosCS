@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    public class RepositorioRango : IRepositorio
+    public class RepositorioRango : IRepositorio<Rango>
     {
         // Atributo privado para almacenar una lista de objetos de tipo Rango.
         private List<Rango> rangos;

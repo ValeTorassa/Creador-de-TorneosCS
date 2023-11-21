@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    public class RepositorioTorneo : IRepositorio
+    public class RepositorioTorneo : IRepositorio<Torneo>
     {
         private List<Torneo> torneos;
 
