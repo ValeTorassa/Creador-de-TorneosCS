@@ -14,16 +14,10 @@ namespace Modelo
         public string Nombre { get => _nombre; set => _nombre = value; }
 
         // Propiedad para obtener la lista de partidas
-        public List<Partida> GetPartidas()
-        {
-            return _partidas;
-        }
+        public List<Partida> Partidas { get => _partidas; }
 
         // Propiedad para obtener la lista de equipos
-        public List<Equipo> GetEquipos()
-        {
-            return _equipos;
-        }
+        public List<Equipo> Equipos { get => _equipos; }
 
         // Constructor de la clase Torneo
         public Torneo()
@@ -171,8 +165,6 @@ namespace Modelo
             equipo.CrearoActualizarEstadisticas(ganada, rondasGanadas, kills);
         }
 
-        
-
         public string GenerarReporteEstadisticasGlobales()
         {
             try{
@@ -193,7 +185,7 @@ namespace Modelo
                 contenidoHTML += "<h2>Posiciones</h2>";
                 contenidoHTML += "<ul>";
 
-                var equiposOrdenados = GetEquipos().OrderByDescending(e => e.Estadisticas.Victorias).ToList();
+                var equiposOrdenados = Equipos.OrderByDescending(e => e.Estadisticas.Victorias).ToList();
                 foreach (var equipo in equiposOrdenados)
                 {
                     contenidoHTML += $"<li>{equipo.Nombre}: Victorias - {equipo.Estadisticas.Victorias}, Rondas Ganadas - {equipo.Estadisticas.RondasGanadas}, Kills - {equipo.Estadisticas.Kills}</li>";
@@ -205,7 +197,7 @@ namespace Modelo
                 contenidoHTML += $"<p>Duracion Promedio: {DuracionPromedio} minutos</p>";
                 contenidoHTML += $"<p>Mapa Mas Jugado: {MapaMasJugado}</p>";
 
-                var equipoConMasKills = GetEquipos().OrderByDescending(e => e.Estadisticas.Kills).FirstOrDefault();
+                var equipoConMasKills = Equipos.OrderByDescending(e => e.Estadisticas.Kills).FirstOrDefault();
                 contenidoHTML += $"<p>Equipo con mas Kills: {equipoConMasKills.Nombre} ({equipoConMasKills.Estadisticas.Kills})</p>";
 
                 contenidoHTML += "</body></html>";

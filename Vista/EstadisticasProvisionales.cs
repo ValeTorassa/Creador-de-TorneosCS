@@ -49,7 +49,7 @@ namespace Vista
                 torneo.CalcularEstadisticas();
 
                 dgvEquipo.DataSource = null;
-                dgvEquipo.DataSource = torneo.GetEquipos();
+                dgvEquipo.DataSource = torneo.Equipos;
 
                 if (dgvEquipo.Rows.Count > 0)
                 {
@@ -120,7 +120,7 @@ namespace Vista
             {
                 // Configura el DataGridView de las partidas.
                 dgvPartidas.DataSource = null;
-                dgvPartidas.DataSource = torneo.GetPartidas();
+                dgvPartidas.DataSource = torneo.Partidas;
 
                 // Agrega un evento de formateo de celda para cambiar el color de las filas según si la partida está jugada o no.
                 dgvPartidas.CellFormatting += (sender, e) =>

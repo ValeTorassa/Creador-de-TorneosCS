@@ -65,7 +65,7 @@ namespace Vista
         private void MostrarEquiposYPartidas()
         {
             dgvEquipos.DataSource = null;
-            dgvEquipos.DataSource = torneo.GetEquipos();
+            dgvEquipos.DataSource = torneo.Equipos;
 
             ActualizarGrillaPartidas();
 
@@ -100,7 +100,7 @@ namespace Vista
         private void MostrarJugadoresEquipo(Equipo equipo)
         {
             dgvEquipoSeleccionado.DataSource = null;
-            dgvEquipoSeleccionado.DataSource = equipo.GetJugadores();
+            dgvEquipoSeleccionado.DataSource = equipo.Jugadores;
         }
 
         // Maneja el evento al hacer clic en el botón "Resultados".
@@ -161,7 +161,7 @@ namespace Vista
         {
             try
             {
-                var partidaSinJugar = torneo.GetPartidas().FirstOrDefault(p => !p.PartidaJugada);
+                var partidaSinJugar = torneo.Partidas.FirstOrDefault(p => !p.PartidaJugada);
 
                 if (partidaSinJugar == null)
                 {
@@ -170,7 +170,7 @@ namespace Vista
                 }
                 else
                 {
-                    var partidasJugadas = torneo.GetPartidas().Count(p => p.PartidaJugada);
+                    var partidasJugadas = torneo.Partidas.Count(p => p.PartidaJugada);
 
                     if (partidasJugadas == 0)
                     {
@@ -196,7 +196,7 @@ namespace Vista
             try
             {
                 dgvPartidas.DataSource = null;
-                dgvPartidas.DataSource = torneo.GetPartidas();
+                dgvPartidas.DataSource = torneo.Partidas;
 
                 dgvPartidas.CellFormatting += (sender, e) =>
                 {

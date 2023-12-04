@@ -14,10 +14,7 @@ namespace Modelo
         public EstadisticasEquipo Estadisticas { get => _estadisticasEquipo; }
 
         //Metodo que devuelve la lista de Jugadores del Equipo
-        public List<Jugador> GetJugadores()
-        {
-            return _jugadores;
-        }
+        public List<Jugador> Jugadores { get => _jugadores; }
 
         //Constructor de la clase Equipo
         public Equipo()

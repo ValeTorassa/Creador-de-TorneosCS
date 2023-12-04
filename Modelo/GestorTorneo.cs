@@ -48,9 +48,9 @@ namespace Modelo
                 torneo.Nombre = nombre;
                 torneo.EquiposAleatorios(Total, ObtenerJugadoresSinEquipo());
 
-                foreach (var equipo in torneo.GetEquipos())
+                foreach (var equipo in torneo.Equipos)
                 {
-                    foreach (var jugador in equipo.GetJugadores())
+                    foreach (var jugador in equipo.Jugadores)
                     {
                         jugador.EnEquipo = true;
                     }
@@ -81,12 +81,12 @@ namespace Modelo
                 torneo.Nombre = nombre;
                 torneo.Ubicacion = ubicacion;
                 torneo.Premio = premio;
-                torneo.EquiposAleatorios(Total, repositorioJugador.ObtenerProfesionales(repositorioRango.ObtenerTodos()));
+                torneo.EquiposAleatorios(Total, repositorioJugador.ObtenerJugadoresNoEnEquipoProfesionales(repositorioRango.ObtenerTodos()));
 
                 // Marca a los jugadores como parte de un equipo
-                foreach (var equipo in torneo.GetEquipos())
+                foreach (var equipo in torneo.Equipos)
                 {
-                    foreach (var jugador in equipo.GetJugadores())
+                    foreach (var jugador in equipo.Jugadores)
                     {
                         jugador.EnEquipo = true;
                     }
@@ -157,9 +157,9 @@ namespace Modelo
                     return "No se encontró el torneo a eliminar.";
                 }
 
-                foreach (Equipo equipo in torneo.GetEquipos())
+                foreach (Equipo equipo in torneo.Equipos)
                 {
-                    foreach (Jugador jugador in equipo.GetJugadores())
+                    foreach (Jugador jugador in equipo.Jugadores)
                     {
                         jugador.EnEquipo = false;
                     }
@@ -183,9 +183,9 @@ namespace Modelo
                     return "No se encontró el torneo a eliminar.";
                 }
 
-                foreach (Equipo equipo in torneo.GetEquipos())
+                foreach (Equipo equipo in torneo.Equipos)
                 {
-                    foreach (Jugador jugador in equipo.GetJugadores())
+                    foreach (Jugador jugador in equipo.Jugadores)
                     {
                         jugador.EnEquipo = false;
                     }

@@ -65,24 +65,7 @@ namespace Modelo
             return false;
         }
 
-
-        // Obtiene una lista de jugadores profesionales
-        public List<Jugador> ObtenerProfesionales(List<Rango> rangos)
-        {
-            // Encontrar el rango con la mayor cantidad de puntos
-            Rango rangoMaximo = rangos.OrderByDescending(r => r.Escala).FirstOrDefault();
-
-           
-                // Obtener todos los jugadores que tienen el rango máximo
-                List<Jugador> jugadoresRangoMaximo = jugadores
-                .Where(jugador => jugador.Rango.Nombre == rangoMaximo.Nombre)
-                .ToList();
-
-                return jugadoresRangoMaximo;
-            
-            
-        }
-
+   
         //Obtiene una lista de jugadores que no esta en algun equipo
         public List<Jugador> ObtenerJugadoresNoEnEquipo()
         {

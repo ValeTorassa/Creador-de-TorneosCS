@@ -132,3 +132,15 @@ C:\Users\Valen\Downloads\Creador-de-TorneosCS\Modelo\bin\Debug\net6.0\Modelo.dep
 C:\Users\Valen\Downloads\Creador-de-TorneosCS\Modelo\bin\Debug\net6.0\Modelo.dll
 C:\Users\Valen\Downloads\Creador-de-TorneosCS\Modelo\bin\Debug\net6.0\Modelo.pdb
 C:\Users\Valen\Downloads\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\ref\Modelo.dll
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\bin\Debug\net6.0\Modelo.deps.json
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\bin\Debug\net6.0\Modelo.dll
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\bin\Debug\net6.0\Modelo.pdb
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.AssemblyInfoInputs.cache
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.AssemblyInfo.cs
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.sourcelink.json
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.dll
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\refint\Modelo.dll
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\Modelo.pdb
+C:\Users\estel\OneDrive\Escritorio\UAI\TORNEO CS POO\Creador-de-TorneosCS\Modelo\obj\Debug\net6.0\ref\Modelo.dll

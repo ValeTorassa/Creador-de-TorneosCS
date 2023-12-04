@@ -123,7 +123,7 @@ namespace Vista
                 lblDuracion.Text = torneo.DuracionPromedio.ToString() + " m";
                 lblMapaMasJugado.Text = torneo.MapaMasJugado.ToString();
 
-                var equipoConMasKills = torneo.GetEquipos().OrderByDescending(e => e.Estadisticas.Kills).FirstOrDefault();
+                var equipoConMasKills = torneo.Equipos.OrderByDescending(e => e.Estadisticas.Kills).FirstOrDefault();
                 lblMasKills.Text = equipoConMasKills.Nombre + $" ({equipoConMasKills.Estadisticas.Kills})";
             }
             catch (Exception ex)
@@ -152,7 +152,7 @@ namespace Vista
                 torneo.CalcularEstadisticas();
 
                 dgvEquipo.DataSource = null;
-                dgvEquipo.DataSource = torneo.GetEquipos();
+                dgvEquipo.DataSource = torneo.Equipos;
 
                 if (dgvEquipo.Rows.Count > 0)
                 {
@@ -160,7 +160,7 @@ namespace Vista
                     ObtenerDatosEquipo(primerEquipo.Estadisticas);
                 }
 
-                CargarGBPosiciones(torneo.GetEquipos());
+                CargarGBPosiciones(torneo.Equipos);
 
                 CargarGBDestacados(torneo);
             }
